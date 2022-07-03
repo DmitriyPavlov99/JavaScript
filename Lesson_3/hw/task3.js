@@ -13,4 +13,13 @@
 //     ['odd', 'odd', 'odd']
 // ]
 // -->
-
+var arr =[];
+    var inpit = +prompt ("Введите размер массива");
+    var length = parseInt(inpit);
+    for (var i = 0; i < length; i++) {
+        if ((i % 2) === 0) {
+            arr.push(['even', 'even', 'even']);
+        } else {
+            arr.push(['odd', 'odd', 'odd']);
+        }
+    }
