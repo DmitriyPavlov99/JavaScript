@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+            Сумма в диапазоне
+		
+			Напишите 2 функции.
+			Первая функция генерирует массив на N рандомных чисел в диапазоне от {A} до {B} и возвращает его 
+			Т.е. принимает 3 параметра и {A} не может быть больше чем {B}
+            пераметры {A} и {B} запросить у пользователя
+			Например: doSmth(8, 1, 10) -> [3, 2, 5, 4, 7, 1, 3, 10]
+			
+			Вторая функция принимает массив рандомных чисел, индекс {С} c которого начинать подсчет и индекс {D} ПО который считать
+            индексы {С} и {D} запросить у пользователя
+			Должна быть валидация индексов
+				- Чтобы не было отрицательных чисел
+				- Чтобы индекс не выходил за рамки допустимых индексов
+				- Чтобы первый индекс был меньше или равен второму
+			
+			Пример вывода в консоль:
+			Массив: [.....] сгенерированный от {A} до {B}
+			Сумма чисел в диапазоне от индекса {С} по индекс {D} равна: 10 
+     -->
+
+    <script>
+      function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      var a = +prompt("Add A");
+      var b = +prompt("Add B");
+      var n = +prompt("Add long N");
+      function doSomthing(a, b, n) {
+        if (a > b) {
+          alert("A > B");
+        }
+        var arr = [];
+        for (let i = 0; i < n; i++) {
+          var randomInt = getRandomInt(a, b);
+          arr.push(randomInt);
+        }
+        return arr;
+      }
+      var c = +prompt("Add C");
+      var d = +prompt("Add D");
+
+      function calculateRangeArr(c, d, newArr) {
+        if (c < 0 || d < 0) {
+          alert("numbers negativ");
+          return;
+        }
+        if (c < a || d > b) {
+          alert("Error");
+          return;
+        }
+        if (c > d) {
+          alert("C > D");
+          return;
+        }
+        var sum = 0;
+        for (var i = c; i < d; i++) {
+          sum = sum + newArr[i];
+        }
+        console.log(c + d + sum);
+      }
+      var arrRandom = doSomthing(a, b, n);
+      console.log(arrRandom);
+      calculateRangeArr(c, d, arrRandom);
+    </script>
+  </body>
+</html>

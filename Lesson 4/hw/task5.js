@@ -16,27 +16,63 @@
 // Спросить пользователя, хочет ли он повторить, если "да", запустить игру заново
 // -->
 
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
+function fullGame() {
+  function getComputerChoice() {
+      var r = 0.34;
+      var p = 0.67;
+      var computerChoice = Math.random();
+
+      if (computerChoice <= r) {
+          return 'Камень';
+      } else if (computerChoice <= p) {
+          return 'Бумага';
+      } else {
+          return 'Ножницы';
+      }
+  }
+
+  let comp = getComputerChoice();
+  alert(comp);
+
+  let user = prompt('Введите ваш выбор: (Камень или Ножницы или Бумага)');
+  function game(comp, user) {
+      if (comp === user) {
+          return 'Ничья';
+      } else if (comp === 'Камень') {
+          if (user === 'Ножницы') {
+              return 'comp wins';
+          }
+          else if (user === 'Бумага') {
+              return 'user wins';
+          }
+      } else if (comp === 'Бумага') {
+          if (user === 'Камень') {
+              return 'comp wins';
+          }
+          if (user === 'Ножницы') {
+              return 'user wins';
+          }
+      } else if (comp === 'Ножницы') {
+          if (user === 'Бумага') {
+              return 'comp wins';
+          }
+          if (user === 'Камень') {
+              return 'user wins';
+          }
+      }
+  }
+  alert(game(comp, user));
 }
 
-function play() {
-  do {
-    pcChoice = getRandomInt(0, 3);
-    switch (pcChoice) {
-      case 0:
-        alert("камень!");
-        break;
-      case 1:
-        alert("Ножницы!");
-        break;
-      case 2:
-        alert("Бумага!");
-        break;
-      default:
-        alert("Что-то не так!");
-    }
-    question = confirm("Ещё раз?");
-  } while (question);
+
+function startGame() {
+  while (true) {
+  fullGame();
+  
+  var result = confirm("Хотите повторить ?");
+  if (!result) {
+    return;
+  }
 }
-play();
+}
+startGame();
