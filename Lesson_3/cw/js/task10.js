@@ -13,7 +13,7 @@ function sumInput() {
     let value = prompt("Введите число", 0);
 
     // Прекращаем ввод?
-    if (value === "" || value === null || !isFinite(value)) break;
+    if (value === "" || value === null || isNaN + tryParse(value)) break;
 
     numbers.push(+value);
   }
